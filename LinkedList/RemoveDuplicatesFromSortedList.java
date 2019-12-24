@@ -1,19 +1,23 @@
 /**
- * Example:
- * var li = ListNode(5)
- * var v = li.`val`
  * Definition for singly-linked list.
- * class ListNode(var `val`: Int) {
- *     var next: ListNode? = null
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
  * }
  */
 class Solution {
-    fun deleteDuplicates(head: ListNode?): ListNode? {
+    public ListNode deleteDuplicates(ListNode head) {
 
-        val set = emptySet<Int>()
-        while (head != null) {
-            set.add(head)
+        ListNode current = head;
+        while(current != null && current.next != null) {
+            if(current.val == current.next.val) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
         }
-        return head
+
+        return head;
     }
 }
